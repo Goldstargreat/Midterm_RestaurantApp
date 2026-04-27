@@ -60,8 +60,9 @@
 app/
  └── src/
       └── main/
-           ├── java/com/polytech/ai/restaurantmanager/
+           ├── java/kr/ac/kopo/midterm_restaurantapp/
            │    └── MainActivity.java (핵심 비즈니스 로직)
            └── res/
-                └── layout/
-                     └── activity_main.xml (UI 레이아웃 설계)
+                ├── layout/
+                │    └── activity_main.xml (UI 레이아웃 설계)
+                └── values/ (문자열 및 색상 리소스)
