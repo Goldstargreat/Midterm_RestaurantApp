@@ -15,7 +15,7 @@ import java.util.ArrayList;
 // Activity 클래스를 상속받아 구현
 public class MainActivity extends Activity {
 
-    // 선택된 항목의 위치를 저장하는 변수
+    // -1은 아무것도 선택되지 않은 초기 상태를 의미
     private int selectedPosition = -1;
 
     @Override
