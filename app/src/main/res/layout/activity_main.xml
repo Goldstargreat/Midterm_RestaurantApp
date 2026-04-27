@@ -10,7 +10,7 @@
         android:id="@+id/tv_selected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="맛집을 선택하거나 추가하세요"
+        android:text="좋아하는 맛집을 관리하세요"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#2E7D32"
@@ -19,19 +19,31 @@
         android:layout_marginBottom="16dp"
         android:background="#E8F5E9" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[맛집 리스트 선택]"
+        android:layout_marginBottom="5dp"/>
+
+    <Spinner
+        android:id="@+id/sp_restaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:padding="10dp"
+        android:background="@android:drawable/btn_dropdown" />
+
     <EditText
         android:id="@+id/et_restaurant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="추가할 맛집 이름을 입력하세요"
-        android:inputType="text"
+        android:hint="새로운 맛집 이름을 입력하세요"
         android:layout_marginBottom="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp">
+        android:orientation="horizontal">
         <Button
             android:id="@+id/btn_add"
             android:layout_width="0dp"
@@ -45,17 +57,9 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="선택 삭제"
+            android:text="현재 맛집 삭제"
             android:backgroundTint="#F44336"
             android:layout_marginStart="5dp" />
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/lv_restaurant"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:choiceMode="singleChoice"
-        android:divider="#DDDDDD"
-        android:dividerHeight="1dp" />
 
 </LinearLayout>
