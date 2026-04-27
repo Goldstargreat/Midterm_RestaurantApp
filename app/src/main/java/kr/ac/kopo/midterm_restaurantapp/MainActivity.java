@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 
         // 데이터 리스트 생성
         final ArrayList<String> dataList = new ArrayList<String>();
-        dataList.add("애슐리 퀸즈");
+        dataList.add("술탄케밥");
         dataList.add("아웃백 스테이크하우스");
         dataList.add("맥도날드");
 
