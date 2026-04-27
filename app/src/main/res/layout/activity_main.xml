@@ -57,7 +57,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="현재 맛집 삭제"
+            android:text="맛집 삭제"
             android:backgroundTint="#F44336"
             android:layout_marginStart="5dp" />
     </LinearLayout>
