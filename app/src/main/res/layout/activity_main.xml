@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_add"
             android:layout_width="0dp"
@@ -52,6 +53,7 @@
             android:text="맛집 추가"
             android:backgroundTint="#2196F3"
             android:layout_marginEnd="5dp" />
+
         <Button
             android:id="@+id/btn_delete"
             android:layout_width="0dp"
@@ -60,6 +62,15 @@
             android:text="맛집 삭제"
             android:backgroundTint="#F44336"
             android:layout_marginStart="5dp" />
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="상세 보기"
+        android:backgroundTint="#FF9800"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>
