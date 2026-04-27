@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedPosition = position;
                 String selectedItem = dataList.get(position);
-                tvSelected.setText("이번 주 모임장소: " + selectedItem);
+                tvSelected.setText("오늘의 맛집: " + selectedItem);
             }
         });
 
