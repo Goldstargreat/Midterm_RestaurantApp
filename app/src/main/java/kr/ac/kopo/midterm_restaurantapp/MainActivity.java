@@ -1,6 +1,6 @@
-package kr.ac.kopo.midterm_restaurantapp; // 박경구 님 패키지 경로
+package kr.ac.kopo.midterm_restaurantapp;
 
-import android.app.Activity; // AppCompatActivity 대신 기본 Activity 사용
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
