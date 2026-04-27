@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
             if (dataList.size() > 0) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra("name", dataList.get(selectedPosition));
-                intent.putExtra("number", "02-123-4567 (예시)");
+                intent.putExtra("number", "02-123-4567");
                 startActivity(intent);
             }
         });
