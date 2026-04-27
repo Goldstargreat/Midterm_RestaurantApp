@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     private int selectedPosition = 0;
-    // [추가] 처음 앱이 켜질 때 자동 선택되는 것을 막기 위한 변수
     private boolean isFirstSelection = true;
 
     @Override
@@ -39,16 +38,14 @@ public class MainActivity extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spRestaurant.setAdapter(adapter);
 
-        // 콤보박스 선택 이벤트 수정
+        // 스피너(콤보박스) 선택 이벤트
         spRestaurant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // [수정] 처음 실행될 때(isFirstSelection이 true일 때)는 텍스트를 바꾸지 않음
                 if (isFirstSelection) {
-                    isFirstSelection = false; // 다음부터는 작동하도록 상태 변경
-                    return; // 여기서 실행을 멈춤 (문구 안 바뀜)
+                    isFirstSelection = false;
+                    return;
                 }
-
                 selectedPosition = position;
                 String selectedItem = dataList.get(position);
                 tvSelected.setText("현재 선택된 맛집: " + selectedItem);
@@ -58,12 +55,16 @@ public class MainActivity extends Activity {
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
-        // 맛집 추가 버튼 (이전과 동일)
+        // [수정] 맛집 추가 버튼: 빈 값 체크 추가
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String input = etRestaurant.getText().toString().trim();
-                if (!input.isEmpty()) {
+
+                if (input.isEmpty()) {
+                    // 입력값이 없을 때 토스트 메시지 출력
+                    Toast.makeText(getApplicationContext(), "추가할 맛집 이름을 입력하세요.", Toast.LENGTH_SHORT).show();
+                } else {
                     dataList.add(input);
                     adapter.notifyDataSetChanged();
                     spRestaurant.setSelection(dataList.size() - 1);
@@ -73,16 +74,26 @@ public class MainActivity extends Activity {
             }
         });
 
-        // 맛집 삭제 버튼 (이전과 동일)
+        // [수정] 맛집 삭제 버튼: 리스트가 비었을 때 예외 처리 추가
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (dataList.size() > 0) {
+                    // 삭제할 아이템이 있는 경우
                     String removedItem = dataList.get(selectedPosition);
                     dataList.remove(selectedPosition);
                     adapter.notifyDataSetChanged();
-                    tvSelected.setText(removedItem + " : 삭제되었습니다.");
-                    if (dataList.size() > 0) spRestaurant.setSelection(0);
+
+                    if (dataList.size() > 0) {
+                        tvSelected.setText(removedItem + " : 삭제되었습니다.");
+                        spRestaurant.setSelection(0);
+                    } else {
+                        // 마지막 남은 아이템을 삭제했을 때
+                        tvSelected.setText("맛집 리스트가 비어 있습니다.");
+                    }
+                } else {
+                    // [핵심] 리스트가 이미 비어있는데 삭제를 누른 경우
+                    Toast.makeText(getApplicationContext(), "삭제할 맛집이 없습니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
