@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
                     dataList.remove(selectedPosition);
                     adapter.notifyDataSetChanged();
 
-                    tvSelected.setText(removedItem + " 가 삭제되었습니다.");
+                    tvSelected.setText(removedItem + " : 삭제되었습니다.");
                     // 리스트가 비어있지 않으면 첫 번째 항목 자동 선택
                     if (dataList.size() > 0) spRestaurant.setSelection(0);
                 } else {
