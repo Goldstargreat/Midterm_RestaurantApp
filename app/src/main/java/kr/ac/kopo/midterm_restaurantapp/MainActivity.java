@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     private int selectedPosition = 0;
-    private boolean isFirstSelection = true; // 초기 문구 유지를 위한 변수
+    private boolean isFirstSelection = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +24,23 @@ public class MainActivity extends Activity {
 
         final TextView tvSelected = (TextView) findViewById(R.id.tv_selected);
         final EditText etRestaurant = (EditText) findViewById(R.id.et_restaurant);
+        final EditText etNumber = (EditText) findViewById(R.id.et_number);
         Button btnAdd = (Button) findViewById(R.id.btn_add);
         Button btnDelete = (Button) findViewById(R.id.btn_delete);
         Button btnDetail = (Button) findViewById(R.id.btn_detail);
         final Spinner spRestaurant = (Spinner) findViewById(R.id.sp_restaurant);
 
-        final ArrayList<String> dataList = new ArrayList<String>();
+        final ArrayList<String> dataList = new ArrayList<>();
         dataList.add("술탄케밥");
         dataList.add("아웃백 스테이크하우스");
         dataList.add("맥도날드");
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        final ArrayList<String> numberList = new ArrayList<>();
+        numberList.add("02-111-1111");
+        numberList.add("02-222-2222");
+        numberList.add("02-333-3333");
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, dataList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spRestaurant.setAdapter(adapter);
@@ -56,13 +62,16 @@ public class MainActivity extends Activity {
 
         // 맛집 추가
         btnAdd.setOnClickListener(v -> {
-            String input = etRestaurant.getText().toString().trim();
-            if (!input.isEmpty()) {
-                dataList.add(input);
+            String inputName = etRestaurant.getText().toString().trim();
+            String inputNumber = etNumber.getText().toString().trim();
+            if (!inputName.isEmpty()) {
+                dataList.add(inputName);
+                numberList.add(inputNumber.isEmpty() ? "번호 없음" : inputNumber);
                 adapter.notifyDataSetChanged();
                 spRestaurant.setSelection(dataList.size() - 1);
-                tvSelected.setText(input + " 가 추가되었습니다.");
+                tvSelected.setText(inputName + " 가 추가되었습니다.");
                 etRestaurant.setText("");
+                etNumber.setText("");
             }
         });
 
@@ -71,19 +80,20 @@ public class MainActivity extends Activity {
             if (dataList.size() > 0) {
                 String removed = dataList.get(selectedPosition);
                 dataList.remove(selectedPosition);
+                numberList.remove(selectedPosition);
                 adapter.notifyDataSetChanged();
                 tvSelected.setText(removed + " : 삭제되었습니다.");
-                selectedPosition = 0; //  삭제 버튼 누르고 범위 오류 방지
+                selectedPosition = 0;
                 if (dataList.size() > 0) spRestaurant.setSelection(0);
             }
         });
 
-        // 상세 보기 (데이터 배달)
+        // 상세 보기
         btnDetail.setOnClickListener(v -> {
             if (dataList.size() > 0) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra("name", dataList.get(selectedPosition));
-                intent.putExtra("number", "02-123-4567");
+                intent.putExtra("number", numberList.get(selectedPosition));
                 startActivity(intent);
             }
         });
