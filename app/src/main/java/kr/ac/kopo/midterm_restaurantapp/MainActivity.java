@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
@@ -68,7 +69,10 @@ public class MainActivity extends Activity {
                 String inputName   = etRestaurant.getText().toString().trim();
                 String inputNumber = etNumber.getText().toString().trim();
 
-                if (inputName.isEmpty()) return;
+                if (inputName.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "식당 이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (inputNumber.isEmpty()) inputNumber = "번호 없음";
 
                 dataList.add(inputName);
@@ -77,6 +81,7 @@ public class MainActivity extends Activity {
                 spRestaurant.setSelection(dataList.size() - 1);
 
                 tvSelected.setText(inputName + " 가 추가되었습니다.");
+                Toast.makeText(MainActivity.this, inputName + " 가 추가되었습니다.", Toast.LENGTH_SHORT).show();
                 etRestaurant.setText("");
                 etNumber.setText("");
             }
@@ -85,7 +90,10 @@ public class MainActivity extends Activity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dataList.size() == 0) return;
+                if (dataList.size() == 0) {
+                    Toast.makeText(MainActivity.this, "삭제할 맛집이 없습니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 String removedName = dataList.get(selectedPosition);
                 dataList.remove(selectedPosition);
@@ -93,6 +101,7 @@ public class MainActivity extends Activity {
                 adapter.notifyDataSetChanged();
 
                 tvSelected.setText(removedName + " : 삭제되었습니다.");
+                Toast.makeText(MainActivity.this, removedName + " : 삭제되었습니다.", Toast.LENGTH_SHORT).show();
                 selectedPosition = 0;
                 if (dataList.size() > 0) spRestaurant.setSelection(0);
             }
@@ -118,6 +127,7 @@ public class MainActivity extends Activity {
             String updatedNumber = data.getStringExtra("updatedNumber");
             numberList.set(selectedPosition, updatedNumber);
             tvSelected.setText(dataList.get(selectedPosition) + " 연락처가 수정되었습니다.");
+            Toast.makeText(MainActivity.this, dataList.get(selectedPosition) + " 연락처가 수정되었습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 }

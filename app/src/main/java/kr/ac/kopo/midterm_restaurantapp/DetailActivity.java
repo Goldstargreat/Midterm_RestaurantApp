@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class DetailActivity extends Activity {
-
+public class DetailActivity extends Activity
+{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
@@ -28,7 +29,8 @@ public class DetailActivity extends Activity {
         tvName.setText(name);
         etNumber.setText(number);
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnSave.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 String updatedNumber = etNumber.getText().toString().trim();
@@ -41,12 +43,15 @@ public class DetailActivity extends Activity {
             }
         });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener()
+            {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+                {
                 setResult(RESULT_CANCELED);
                 finish();
+                }
             }
-        });
+        );
     }
 }
