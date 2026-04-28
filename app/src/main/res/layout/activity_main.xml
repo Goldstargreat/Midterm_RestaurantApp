@@ -1,84 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
-
-    <TextView
-        android:id="@+id/tv_selected"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="좋아하는 맛집을 관리하세요"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#2E7D32"
-        android:gravity="center"
-        android:padding="12dp"
-        android:layout_marginBottom="16dp"
-        android:background="#E8F5E9" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="[맛집 리스트 선택]"
-        android:layout_marginBottom="5dp"/>
-
-    <Spinner
-        android:id="@+id/sp_restaurant"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"
-        android:background="@android:drawable/btn_dropdown" />
-
-    <EditText
-        android:id="@+id/et_restaurant"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="새로운 맛집 이름을 입력하세요"
-        android:layout_marginBottom="5dp" />
-
-    <EditText
-        android:id="@+id/et_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="전화번호를 입력하세요"
-        android:inputType="phone"
-        android:layout_marginBottom="10dp" />
+    android:background="#F1F8E9">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <!-- 상단 타이틀 카드 -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="맛집 추가"
-            android:backgroundTint="#2196F3"
-            android:layout_marginEnd="5dp" />
+            android:orientation="vertical"
+            android:background="#2E7D32"
+            android:padding="20dp"
+            android:layout_marginBottom="16dp">
 
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🍽️ 나의 맛집 리스트"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tv_selected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="좋아하는 맛집을 관리하세요"
+                android:textSize="14sp"
+                android:textColor="#C8E6C9"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+
+        <!-- 맛집 선택 카드 -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="맛집 삭제"
-            android:backgroundTint="#F44336"
-            android:layout_marginStart="5dp" />
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="맛집 선택"
+                android:textSize="13sp"
+                android:textColor="#388E3C"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/sp_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#F9FBE7"
+                android:padding="10dp" />
+
+            <!-- 상세 보기 버튼 -->
+            <TextView
+                android:id="@+id/btn_detail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="📋  상세 보기 / 번호 수정"
+                android:textSize="14sp"
+                android:textColor="#2E7D32"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#E8F5E9"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+        <!-- 맛집 추가 카드 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="새 맛집 추가"
+                android:textSize="13sp"
+                android:textColor="#388E3C"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/et_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="맛집 이름"
+                android:textSize="15sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="#F9FBE7"
+                android:layout_marginBottom="8dp" />
+
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="전화번호"
+                android:textSize="15sp"
+                android:inputType="phone"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="#F9FBE7"
+                android:layout_marginBottom="12dp" />
+
+            <!-- 추가/삭제 버튼 나란히 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_add"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="48dp"
+                    android:text="＋ 추가"
+                    android:textSize="15sp"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#388E3C"
+                    android:layout_marginEnd="6dp" />
+
+                <TextView
+                    android:id="@+id/btn_delete"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="48dp"
+                    android:text="− 삭제"
+                    android:textSize="15sp"
+                    android:textColor="#C62828"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#FFEBEE"
+                    android:layout_marginStart="6dp" />
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_detail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="상세 보기"
-        android:backgroundTint="#FF9800"
-        android:layout_marginTop="10dp" />
-
-</LinearLayout>
+</ScrollView>
