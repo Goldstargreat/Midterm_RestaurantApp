@@ -67,7 +67,6 @@
                 android:background="#F9FBE7"
                 android:layout_marginBottom="16dp" />
 
-            <!-- 저장 버튼 → Button으로 변경 -->
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
@@ -76,11 +75,10 @@
                 android:textSize="16sp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:backgroundTint="@null"
-                android:background="#388E3C"
+                android:background="@drawable/btn_round"
+                android:backgroundTint="#388E3C"
                 android:layout_marginBottom="10dp" />
 
-            <!-- 돌아가기 버튼 → Button으로 변경 -->
             <Button
                 android:id="@+id/btn_back"
                 android:layout_width="match_parent"
@@ -89,8 +87,8 @@
                 android:textSize="16sp"
                 android:textColor="#555555"
                 android:textStyle="bold"
-                android:backgroundTint="@null"
-                android:background="#F5F5F5" />
+                android:background="@drawable/btn_round"
+                android:backgroundTint="#F5F5F5" />
         </LinearLayout>
 
     </LinearLayout>
