@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,15 +30,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvSelected   = (TextView)  findViewById(R.id.tv_selected);
-        spRestaurant = (Spinner)   findViewById(R.id.sp_restaurant);
+        tvSelected   = (TextView) findViewById(R.id.tv_selected);
+        spRestaurant = (Spinner)  findViewById(R.id.sp_restaurant);
         EditText etRestaurant = (EditText) findViewById(R.id.et_restaurant);
         EditText etNumber     = (EditText) findViewById(R.id.et_number);
 
-        // Button 대신 TextView로 캐스팅 (XML 구조에 맞춤)
-        TextView btnAdd    = (TextView) findViewById(R.id.btn_add);
-        TextView btnDelete = (TextView) findViewById(R.id.btn_delete);
-        TextView btnDetail = (TextView) findViewById(R.id.btn_detail);
+        // TextView → Button 으로 변경
+        Button btnAdd    = (Button) findViewById(R.id.btn_add);
+        Button btnDelete = (Button) findViewById(R.id.btn_delete);
+        Button btnDetail = (Button) findViewById(R.id.btn_detail);
 
         dataList = new ArrayList<String>();
         dataList.add("술탄케밥");

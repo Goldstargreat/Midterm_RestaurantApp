@@ -63,8 +63,8 @@
                 android:background="#F9FBE7"
                 android:padding="10dp" />
 
-            <!-- 상세 보기 버튼 -->
-            <TextView
+            <!-- 상세 보기 버튼 → Button으로 변경 -->
+            <Button
                 android:id="@+id/btn_detail"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -72,7 +72,7 @@
                 android:textSize="14sp"
                 android:textColor="#2E7D32"
                 android:textStyle="bold"
-                android:gravity="center"
+                android:backgroundTint="@null"
                 android:background="#E8F5E9"
                 android:layout_marginTop="10dp" />
         </LinearLayout>
@@ -119,13 +119,13 @@
                 android:background="#F9FBE7"
                 android:layout_marginBottom="12dp" />
 
-            <!-- 추가/삭제 버튼 나란히 -->
+            <!-- 추가/삭제 버튼 나란히 → Button으로 변경 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <Button
                     android:id="@+id/btn_add"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -134,11 +134,11 @@
                     android:textSize="15sp"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
-                    android:gravity="center"
+                    android:backgroundTint="@null"
                     android:background="#388E3C"
                     android:layout_marginEnd="6dp" />
 
-                <TextView
+                <Button
                     android:id="@+id/btn_delete"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -147,7 +147,7 @@
                     android:textSize="15sp"
                     android:textColor="#C62828"
                     android:textStyle="bold"
-                    android:gravity="center"
+                    android:backgroundTint="@null"
                     android:background="#FFEBEE"
                     android:layout_marginStart="6dp" />
             </LinearLayout>

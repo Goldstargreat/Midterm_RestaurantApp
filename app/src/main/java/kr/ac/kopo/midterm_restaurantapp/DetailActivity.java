@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,12 +16,12 @@ public class DetailActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        TextView tvName   = (TextView)  findViewById(R.id.tv_detail_name);
-        EditText etNumber = (EditText)  findViewById(R.id.et_detail_number);
+        TextView tvName   = (TextView) findViewById(R.id.tv_detail_name);
+        EditText etNumber = (EditText) findViewById(R.id.et_detail_number);
 
-        // XML이 TextView이므로 타입을 TextView로 통일
-        TextView btnSave  = (TextView)  findViewById(R.id.btn_save);
-        TextView btnBack  = (TextView)  findViewById(R.id.btn_back);
+        // TextView → Button 으로 변경
+        Button btnSave = (Button) findViewById(R.id.btn_save);
+        Button btnBack = (Button) findViewById(R.id.btn_back);
 
         Intent intent = getIntent();
         String name   = intent.getStringExtra("name");
@@ -44,14 +45,13 @@ public class DetailActivity extends Activity
         });
 
         btnBack.setOnClickListener(new View.OnClickListener()
-            {
+        {
             @Override
             public void onClick(View v)
-                {
+            {
                 setResult(RESULT_CANCELED);
                 finish();
-                }
             }
-        );
+        });
     }
 }
