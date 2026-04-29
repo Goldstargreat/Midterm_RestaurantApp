@@ -71,7 +71,7 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:text="💾  저장하기"
+                android:text="💾 저장하기"
                 android:textSize="16sp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
