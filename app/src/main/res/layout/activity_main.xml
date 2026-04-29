@@ -17,7 +17,6 @@
             android:background="#2E7D32"
             android:padding="20dp"
             android:layout_marginBottom="10dp">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -25,75 +24,35 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF" />
-
             <TextView
                 android:id="@+id/tv_selected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="좋아하는 맛집을 관리하세요"
+                android:text="카테고리를 선택하고 맛집을 추가하세요"
                 android:textSize="14sp"
-                android:textColor="#C8E6C9"
-                android:layout_marginTop="6dp" />
+                android:textColor="#C8E6C9" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/btn_cat_all"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:text="전체"
-                android:textSize="14sp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:background="@drawable/btn_round"
-                android:backgroundTint="#81C784"
-                android:layout_marginEnd="4dp" />
-
-            <Button
-                android:id="@+id/btn_cat_korean"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:text="한식"
-                android:textSize="14sp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:background="@drawable/btn_round"
-                android:backgroundTint="#A5D6A7"
-                android:layout_marginEnd="4dp" />
-
-            <Button
-                android:id="@+id/btn_cat_western"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:text="양식"
-                android:textSize="14sp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:background="@drawable/btn_round"
-                android:backgroundTint="#A5D6A7"
-                android:layout_marginEnd="4dp" />
-
-            <Button
-                android:id="@+id/btn_cat_jap"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="48dp"
-                android:text="일식"
-                android:textSize="14sp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:background="@drawable/btn_round"
-                android:backgroundTint="#A5D6A7" />
+            android:gravity="center"
+            android:layout_marginBottom="15dp">
+            <Button android:id="@+id/btn_cat_all" android:layout_width="wrap_content" android:layout_height="40dp" android:text="전체" android:layout_margin="2dp"/>
+            <Button android:id="@+id/btn_cat_korean" android:layout_width="wrap_content" android:layout_height="40dp" android:text="한식" android:layout_margin="2dp"/>
+            <Button android:id="@+id/btn_cat_western" android:layout_width="wrap_content" android:layout_height="40dp" android:text="양식" android:layout_margin="2dp"/>
+            <Button android:id="@+id/btn_cat_japanese" android:layout_width="wrap_content" android:layout_height="40dp" android:text="일식" android:layout_margin="2dp"/>
         </LinearLayout>
+
+        <Spinner
+            android:id="@+id/sp_restaurant"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_round"
+            android:layout_marginBottom="15dp"
+            android:padding="10dp"
+            android:elevation="2dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,111 +60,67 @@
             android:orientation="vertical"
             android:background="#FFFFFF"
             android:padding="16dp"
-            android:layout_marginBottom="12dp"
-            android:elevation="2dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="맛집 선택"
-                android:textSize="13sp"
-                android:textColor="#388E3C"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-            <Spinner
-                android:id="@+id/sp_restaurant"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="#F9FBE7"
-                android:padding="10dp" />
-
-            <Button
-                android:id="@+id/btn_detail"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="📋  상세 보기 / 번호 수정"
-                android:textSize="14sp"
-                android:textColor="#2E7D32"
-                android:textStyle="bold"
-                android:backgroundTint="#E8F5E9"
-                android:background="@drawable/btn_round"
-                android:layout_marginTop="10dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="12dp"
-            android:elevation="2dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="새 맛집 추가"
-                android:textSize="13sp"
-                android:textColor="#388E3C"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
+            android:elevation="4dp">
 
             <EditText
                 android:id="@+id/et_restaurant"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="맛집 이름"
-                android:textSize="15sp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:layout_height="48dp"
+                android:hint="맛집 이름을 입력하세요"
+                android:paddingLeft="12dp"
                 android:background="#F9FBE7"
                 android:layout_marginBottom="8dp" />
 
             <EditText
                 android:id="@+id/et_number"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:hint="전화번호"
-                android:textSize="15sp"
+                android:layout_height="48dp"
+                android:hint="전화번호를 입력하세요"
                 android:inputType="phone"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:paddingLeft="12dp"
                 android:background="#F9FBE7"
                 android:layout_marginBottom="12dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="카테고리 선택"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+            <RadioGroup
+                android:id="@+id/rg_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+                <RadioButton android:id="@+id/rb_korean" android:layout_width="0dp" android:layout_weight="1" android:text="한식" android:checked="true"/>
+                <RadioButton android:id="@+id/rb_western" android:layout_width="0dp" android:layout_weight="1" android:text="양식"/>
+                <RadioButton android:id="@+id/rb_japanese" android:layout_width="0dp" android:layout_weight="1" android:text="일식"/>
+            </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
                 <Button
                     android:id="@+id/btn_add"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="48dp"
                     android:text="＋ 추가"
-                    android:textSize="15sp"
                     android:textColor="#FFFFFF"
-                    android:textStyle="bold"
-                    android:background="@drawable/btn_round"
                     android:backgroundTint="#388E3C"
                     android:layout_marginEnd="6dp" />
-
                 <Button
                     android:id="@+id/btn_delete"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="48dp"
                     android:text="− 삭제"
-                    android:textSize="15sp"
                     android:textColor="#C62828"
-                    android:textStyle="bold"
-                    android:background="@drawable/btn_round"
                     android:backgroundTint="#FFEBEE"
                     android:layout_marginStart="6dp" />
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>
