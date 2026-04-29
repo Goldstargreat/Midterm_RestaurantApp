@@ -39,10 +39,43 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_marginBottom="15dp">
-            <Button android:id="@+id/btn_cat_all" android:layout_width="wrap_content" android:layout_height="40dp" android:text="전체" android:layout_margin="2dp"/>
-            <Button android:id="@+id/btn_cat_korean" android:layout_width="wrap_content" android:layout_height="40dp" android:text="한식" android:layout_margin="2dp"/>
-            <Button android:id="@+id/btn_cat_western" android:layout_width="wrap_content" android:layout_height="40dp" android:text="양식" android:layout_margin="2dp"/>
-            <Button android:id="@+id/btn_cat_japanese" android:layout_width="wrap_content" android:layout_height="40dp" android:text="일식" android:layout_margin="2dp"/>
+            <Button
+                android:id="@+id/btn_cat_all"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="전체"
+                android:layout_margin="2dp"/>
+            <Button
+                android:id="@+id/btn_cat_korean"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="한식"
+                android:layout_margin="2dp"/>
+            <Button
+                android:id="@+id/btn_cat_china"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="중식"
+                android:layout_margin="2dp"/>
+            <Button
+                android:id="@+id/btn_cat_japanese"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="일식"
+                android:layout_margin="2dp"/>
+            <Button
+                android:id="@+id/btn_cat_western"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="양식"
+                android:layout_margin="2dp"/>
+            <Button
+                android:id="@+id/btn_cat_etcetra"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="기타"
+                android:layout_margin="2dp"/>
+
         </LinearLayout>
 
         <Spinner
@@ -102,6 +135,27 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="12dp">
 
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rb_chicken"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="치킨"-->
+<!--                    android:checked="true"/>-->
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rb_pizza"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="피자"-->
+<!--                    android:checked="true"/>-->
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rb_hamburger"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="햄버거"-->
+<!--                    android:checked="true"/>-->
                 <RadioButton
                     android:id="@+id/rb_korean"
                     android:layout_width="0dp"
@@ -110,17 +164,31 @@
                     android:text="한식"
                     android:checked="true"/>
                 <RadioButton
-                    android:id="@+id/rb_western"
+                    android:id="@+id/rb_china"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="양식"/>
+                    android:text="중식"
+                    android:checked="true"/>
                 <RadioButton
                     android:id="@+id/rb_japanese"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="일식"/>
+                <RadioButton
+                    android:id="@+id/rb_western"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="양식"/>
+                <RadioButton
+                    android:id="@+id/rb_etcetera"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="기타"/>
+
             </RadioGroup>
 
             <LinearLayout
