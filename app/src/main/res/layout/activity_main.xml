@@ -93,9 +93,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="12dp">
-                <RadioButton android:id="@+id/rb_korean" android:layout_width="0dp" android:layout_weight="1" android:text="한식" android:checked="true"/>
-                <RadioButton android:id="@+id/rb_western" android:layout_width="0dp" android:layout_weight="1" android:text="양식"/>
-                <RadioButton android:id="@+id/rb_japanese" android:layout_width="0dp" android:layout_weight="1" android:text="일식"/>
+
+                <RadioButton
+                    android:id="@+id/rb_korean"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="한식"
+                    android:checked="true"/>
+                <RadioButton
+                    android:id="@+id/rb_western"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="양식"/>
+                <RadioButton
+                    android:id="@+id/rb_japanese"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="일식"/>
             </RadioGroup>
 
             <LinearLayout
