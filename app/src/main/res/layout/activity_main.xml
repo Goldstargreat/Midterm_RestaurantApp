@@ -33,67 +33,30 @@
                 android:textColor="#C8E6C9" />
         </LinearLayout>
 
-        <HorizontalScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
+            android:orientation="vertical"
             android:layout_marginBottom="15dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btn_cat_all"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="전체"
-                    android:layout_margin="2dp"
-                    android:backgroundTint="#81C784"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/btn_cat_korean"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="한식"
-                    android:layout_margin="2dp"
-                    android:backgroundTint="#81C784"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/btn_cat_china"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="중식"
-                    android:layout_margin="2dp"
-                    android:backgroundTint="#81C784"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/btn_cat_japanese"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="일식"
-                    android:layout_margin="2dp"
-                    android:backgroundTint="#81C784"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/btn_cat_western"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="양식"
-                    android:layout_margin="2dp"
-                    android:backgroundTint="#81C784"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/btn_cat_etcetra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="기타"
-                    android:layout_margin="2dp"
-                    android:backgroundTint="#81C784"
-                    android:textSize="12sp" />
+                <Button android:id="@+id/btn_cat_all" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="전체" android:layout_margin="2dp" android:backgroundTint="#81C784" android:textSize="12sp" />
+                <Button android:id="@+id/btn_cat_korean" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="한식" android:layout_margin="2dp" android:backgroundTint="#81C784" android:textSize="12sp" />
+                <Button android:id="@+id/btn_cat_china" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="중식" android:layout_margin="2dp" android:backgroundTint="#81C784" android:textSize="12sp" />
             </LinearLayout>
-        </HorizontalScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button android:id="@+id/btn_cat_japanese" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="일식" android:layout_margin="2dp" android:backgroundTint="#81C784" android:textSize="12sp" />
+                <Button android:id="@+id/btn_cat_western" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="양식" android:layout_margin="2dp" android:backgroundTint="#81C784" android:textSize="12sp" />
+                <Button android:id="@+id/btn_cat_etcetra" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:text="기타" android:layout_margin="2dp" android:backgroundTint="#81C784" android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <Spinner
             android:id="@+id/sp_restaurant"
@@ -108,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="상세 정보 보기"
+            android:textColor="#FFFFFF"
             android:backgroundTint="#66BB6A"
             android:layout_marginBottom="25dp" />
 
@@ -119,89 +83,29 @@
             android:padding="15dp"
             android:elevation="4dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="새로운 맛집 등록"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp" />
-
-            <EditText
-                android:id="@+id/et_restaurant"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="맛집 이름 입력"
-                android:layout_marginBottom="10dp" />
-
-            <EditText
-                android:id="@+id/et_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="전화번호 입력"
-                android:inputType="phone"
-                android:layout_marginBottom="10dp" />
+            <EditText android:id="@+id/et_restaurant" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="맛집 이름 입력" />
+            <EditText android:id="@+id/et_number" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="전화번호 입력" android:inputType="phone" />
 
             <RadioGroup
                 android:id="@+id/rg_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
-                <RadioButton
-                    android:id="@+id/rb_korean"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="한식"
-                    android:checked="true"/>
-                <RadioButton
-                    android:id="@+id/rb_china"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="중식"/>
-                <RadioButton
-                    android:id="@+id/rb_japanese"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="일식"/>
-                <RadioButton
-                    android:id="@+id/rb_western"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="양식"/>
-                <RadioButton
-                    android:id="@+id/rb_etcetra"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="기타"/>
+                android:layout_marginTop="10dp">
+                <RadioButton android:id="@+id/rb_korean" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="한식" android:checked="true" android:textSize="11sp"/>
+                <RadioButton android:id="@+id/rb_china" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="중식" android:textSize="11sp"/>
+                <RadioButton android:id="@+id/rb_japanese" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="일식" android:textSize="11sp"/>
+                <RadioButton android:id="@+id/rb_western" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="양식" android:textSize="11sp"/>
+                <RadioButton android:id="@+id/rb_etcetra" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="기타" android:textSize="11sp"/>
             </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/btn_add"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="48dp"
-                    android:text="＋ 추가"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#388E3C"
-                    android:layout_marginEnd="6dp" />
-                <Button
-                    android:id="@+id/btn_delete"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="48dp"
-                    android:text="− 삭제"
-                    android:textColor="#C62828"
-                    android:backgroundTint="#FFEBEE"
-                    android:layout_marginStart="6dp" />
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <Button android:id="@+id/btn_add" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="＋ 추가" android:backgroundTint="#388E3C" />
+                <Button android:id="@+id/btn_delete" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="－ 삭제" android:backgroundTint="#C62828" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

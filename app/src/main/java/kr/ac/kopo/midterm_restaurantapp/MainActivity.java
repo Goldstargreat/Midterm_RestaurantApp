@@ -4,14 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
@@ -25,15 +18,13 @@ public class MainActivity extends Activity {
     RadioGroup rgCategory;
     Button btnDetail;
 
-    ArrayList<String> listAll = new ArrayList<>();
-    ArrayList<String> listKorean = new ArrayList<>();
-    ArrayList<String> listWestern = new ArrayList<>();
-    ArrayList<String> listJapanese = new ArrayList<>();
+    ArrayList<String> listAll = new ArrayList<>(), listKorean = new ArrayList<>(),
+            listWestern = new ArrayList<>(), listJapanese = new ArrayList<>(),
+            listChina = new ArrayList<>(), listEtc = new ArrayList<>();
 
-    ArrayList<String> numsAll = new ArrayList<>();
-    ArrayList<String> numsKorean = new ArrayList<>();
-    ArrayList<String> numsWestern = new ArrayList<>();
-    ArrayList<String> numsJapanese = new ArrayList<>();
+    ArrayList<String> numsAll = new ArrayList<>(), numsKorean = new ArrayList<>(),
+            numsWestern = new ArrayList<>(), numsJapanese = new ArrayList<>(),
+            numsChina = new ArrayList<>(), numsEtc = new ArrayList<>();
 
     ArrayList<String> currentData;
     ArrayList<String> currentNums;
@@ -44,15 +35,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // UI 요소 연결
-        tvSelected = (TextView) findViewById(R.id.tv_selected);
-        spRestaurant = (Spinner) findViewById(R.id.sp_restaurant);
-        etRestaurant = (EditText) findViewById(R.id.et_restaurant);
-        etNumber = (EditText) findViewById(R.id.et_number);
-        rgCategory = (RadioGroup) findViewById(R.id.rg_category);
-        btnDetail = (Button) findViewById(R.id.btn_detail);
+        tvSelected = findViewById(R.id.tv_selected);
+        spRestaurant = findViewById(R.id.sp_restaurant);
+        etRestaurant = findViewById(R.id.et_restaurant);
+        etNumber = findViewById(R.id.et_number);
+        rgCategory = findViewById(R.id.rg_category);
+        btnDetail = findViewById(R.id.btn_detail);
 
-        // 데이터 초기화
         currentData = listAll;
         currentNums = numsAll;
 
@@ -60,122 +49,80 @@ public class MainActivity extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spRestaurant.setAdapter(adapter);
 
-        // 상단 카테고리 버튼 처리 (xml에 정의된 아이디와 일치시킴)
-        Button btnCatAll = (Button) findViewById(R.id.btn_cat_all);
-        Button btnCatKorean = (Button) findViewById(R.id.btn_cat_korean);
-        Button btnCatWestern = (Button) findViewById(R.id.btn_cat_western);
-        Button btnCatJapanese = (Button) findViewById(R.id.btn_cat_japanese);
-
-        View.OnClickListener catListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int id = v.getId();
-                if (id == R.id.btn_cat_all) updateSpinner(listAll, numsAll);
-                else if (id == R.id.btn_cat_korean) updateSpinner(listKorean, numsKorean);
-                else if (id == R.id.btn_cat_western) updateSpinner(listWestern, numsWestern);
-                else if (id == R.id.btn_cat_japanese) updateSpinner(listJapanese, numsJapanese);
-            }
+        // 카테고리 버튼 리스너
+        View.OnClickListener catListener = v -> {
+            int id = v.getId();
+            if (id == R.id.btn_cat_all) updateSpinner(listAll, numsAll);
+            else if (id == R.id.btn_cat_korean) updateSpinner(listKorean, numsKorean);
+            else if (id == R.id.btn_cat_western) updateSpinner(listWestern, numsWestern);
+            else if (id == R.id.btn_cat_japanese) updateSpinner(listJapanese, numsJapanese);
+            else if (id == R.id.btn_cat_china) updateSpinner(listChina, numsChina);
+            else if (id == R.id.btn_cat_etcetra) updateSpinner(listEtc, numsEtc);
         };
 
-        btnCatAll.setOnClickListener(catListener);
-        btnCatKorean.setOnClickListener(catListener);
-        btnCatWestern.setOnClickListener(catListener);
-        btnCatJapanese.setOnClickListener(catListener);
+        int[] catIds = {R.id.btn_cat_all, R.id.btn_cat_korean, R.id.btn_cat_western,
+                R.id.btn_cat_japanese, R.id.btn_cat_china, R.id.btn_cat_etcetra};
+        for (int id : catIds) findViewById(id).setOnClickListener(catListener);
 
         // 추가 버튼
-        Button btnAdd = (Button) findViewById(R.id.btn_add);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = etRestaurant.getText().toString().trim();
-                String num = etNumber.getText().toString().trim();
+        findViewById(R.id.btn_add).setOnClickListener(v -> {
+            String name = etRestaurant.getText().toString().trim();
+            String num = etNumber.getText().toString().trim();
+            if (name.isEmpty()) return;
 
-                if (name.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "이름을 입력하세요", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (num.isEmpty()) num = "번호 없음";
+            listAll.add(name); numsAll.add(num.isEmpty() ? "번호 없음" : num);
 
-                listAll.add(name);
-                numsAll.add(num);
+            int checkedId = rgCategory.getCheckedRadioButtonId();
+            if (checkedId == R.id.rb_korean) { listKorean.add(name); numsKorean.add(num); }
+            else if (checkedId == R.id.rb_western) { listWestern.add(name); numsWestern.add(num); }
+            else if (checkedId == R.id.rb_japanese) { listJapanese.add(name); numsJapanese.add(num); }
+            else if (checkedId == R.id.rb_china) { listChina.add(name); numsChina.add(num); }
+            else if (checkedId == R.id.rb_etcetra) { listEtc.add(name); numsEtc.add(num); }
 
-                int checkedId = rgCategory.getCheckedRadioButtonId();
-                if (checkedId == R.id.rb_korean) {
-                    listKorean.add(name);
-                    numsKorean.add(num);
-                } else if (checkedId == R.id.rb_western) {
-                    listWestern.add(name);
-                    numsWestern.add(num);
-                } else if (checkedId == R.id.rb_japanese) {
-                    listJapanese.add(name);
-                    numsJapanese.add(num);
-                }
-
-                adapter.notifyDataSetChanged();
-                etRestaurant.setText("");
-                etNumber.setText("");
-            }
+            adapter.notifyDataSetChanged();
+            etRestaurant.setText(""); etNumber.setText("");
         });
 
         // 삭제 버튼
-        Button btnDelete = (Button) findViewById(R.id.btn_delete);
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentData.size() > 0 && selectedPosition < currentData.size()) {
-                    String target = currentData.get(selectedPosition);
-                    listAll.remove(target);
-                    // 실제 인덱스 관리는 복잡하므로 간단하게 현재 리스트에서 제거
-                    currentData.remove(selectedPosition);
-                    currentNums.remove(selectedPosition);
-                    adapter.notifyDataSetChanged();
-                    tvSelected.setText("삭제되었습니다.");
-                }
+        findViewById(R.id.btn_delete).setOnClickListener(v -> {
+            if (currentData.size() > 0) {
+                String name = currentData.get(selectedPosition);
+                // 전체 리스트 동기화 삭제
+                int idx = listAll.indexOf(name);
+                if (idx != -1) { listAll.remove(idx); numsAll.remove(idx); }
+                if (currentData != listAll) { currentData.remove(selectedPosition); currentNums.remove(selectedPosition); }
+                adapter.notifyDataSetChanged();
             }
         });
 
-        // 스피너 선택 (위치 저장)
         spRestaurant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> p, View v, int pos, long id) {
+            @Override public void onItemSelected(AdapterView<?> p, View v, int pos, long id) {
                 selectedPosition = pos;
                 tvSelected.setText("선택됨: " + currentData.get(pos));
             }
-            @Override
-            public void onNothingSelected(AdapterView<?> p) {}
+            @Override public void onNothingSelected(AdapterView<?> p) {}
         });
 
-        // 상세보기 버튼 (McDonald 등 상세 페이지 이동)
-        btnDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentData.size() > 0) {
-                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                    intent.putExtra("name", currentData.get(selectedPosition));
-                    intent.putExtra("number", currentNums.get(selectedPosition));
-                    startActivityForResult(intent, REQUEST_DETAIL);
-                } else {
-                    Toast.makeText(MainActivity.this, "맛집을 먼저 추가하세요", Toast.LENGTH_SHORT).show();
-                }
+        btnDetail.setOnClickListener(v -> {
+            if (currentData.size() > 0) {
+                Intent intent = new Intent(this, DetailActivity.class);
+                intent.putExtra("name", currentData.get(selectedPosition));
+                intent.putExtra("number", currentNums.get(selectedPosition));
+                startActivityForResult(intent, REQUEST_DETAIL);
             }
         });
     }
 
-    private void updateSpinner(ArrayList<String> newData, ArrayList<String> newNums) {
-        currentData = newData;
-        currentNums = newNums;
+    private void updateSpinner(ArrayList<String> data, ArrayList<String> nums) {
+        currentData = data; currentNums = nums;
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currentData);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spRestaurant.setAdapter(adapter);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_DETAIL && resultCode == RESULT_OK) {
-            String updatedNumber = data.getStringExtra("updatedNumber");
-            currentNums.set(selectedPosition, updatedNumber);
-            Toast.makeText(this, "번호가 수정되었습니다", Toast.LENGTH_SHORT).show();
+            currentNums.set(selectedPosition, data.getStringExtra("updatedNumber"));
         }
     }
 }
