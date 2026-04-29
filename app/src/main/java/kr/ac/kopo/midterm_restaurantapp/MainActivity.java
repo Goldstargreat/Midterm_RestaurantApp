@@ -31,7 +31,8 @@ public class MainActivity extends Activity {
     ArrayAdapter<String> adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -117,18 +118,23 @@ public class MainActivity extends Activity {
         });
 
         // 삭제 버튼 (람다식 -> 익명 클래스로 변경)
-        findViewById(R.id.btn_delete).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_delete).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                if (currentData.size() > 0) {
+            public void onClick(View v)
+            {
+                if (currentData.size() > 0)
+                {
                     String name = currentData.get(selectedPosition);
                     // 전체 리스트 동기화 삭제
                     int idx = listAll.indexOf(name);
-                    if (idx != -1) {
+                    if (idx != -1)
+                    {
                         listAll.remove(idx);
                         numsAll.remove(idx);
                     }
-                    if (currentData != listAll) {
+                    if (currentData != listAll)
+                    {
                         currentData.remove(selectedPosition);
                         currentNums.remove(selectedPosition);
                     }
@@ -137,9 +143,11 @@ public class MainActivity extends Activity {
             }
         });
 
-        spRestaurant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spRestaurant.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
             @Override
-            public void onItemSelected(AdapterView<?> p, View v, int pos, long id) {
+            public void onItemSelected(AdapterView<?> p, View v, int pos, long id)
+            {
                 selectedPosition = pos;
                 tvSelected.setText("선택됨: " + currentData.get(pos));
             }
